@@ -8,7 +8,7 @@ print("Загадано число от 1 до 100")
 min = 0
 max = 100
 while True:
-    predict = int(input())
+    predict = int(input())47
     count += 1
     if number == predict:
         break
