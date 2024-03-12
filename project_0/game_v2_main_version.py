@@ -1,16 +1,18 @@
 import numpy as np
 import random
 random.seed()
-def guess_number(start, end, max_count): 
+def guess_number(start, end, max_count, hidden_number): 
     #start, end - диапазон чисел от 1 до 100
     #max_count - максимальное количество попыток (20)
-    print("Загадайте число от {start} до {end} я попытаюсь угадать его за {max_count} попыток или меньше.")
+    #print("Загадайте число от {start} до {end} я попытаюсь угадать его за {max_count} попыток или меньше.")
     low = start
     high = end
     #low - минимальное значение числа
     #high - максимальное значение числа
     
     for count in range(1, max_count + 1):
+        #middle - середина диапазона от low до high
+        middle = int((high-low)/2)
         guess = random.randint(low, high)
         #guess - угадываемые числа
         print(f'Попытка {count}: Я думаю ваше число {guess}.')
@@ -20,17 +22,17 @@ def guess_number(start, end, max_count):
             print("Ура! Я угадал число!")
             return
                  
-        elif guess < hidden_number:
+        elif hidden_number < middle:
             print("Мое число слишком маленькое.")
-            low = guess + 1
+            high = middle
             
         else:
             print("Мое число слишком большое.")
-            high = guess - 1
+            low = middle
             
     print("К сожалению, я не смог угадать число за заданное количество попыток.")
 hidden_number = random.randint(1, 100)
-guess_number(1, 100, 20)                        
+guess_number(1, 100, 20, hidden_number)                        
            
             
 
